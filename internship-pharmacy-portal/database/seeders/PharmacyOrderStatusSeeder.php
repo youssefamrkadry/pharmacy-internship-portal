@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\PharmacyOrderStatus;
 use Illuminate\Database\Seeder;
 
 class PharmacyOrderStatusSeeder extends Seeder
@@ -12,6 +12,10 @@ class PharmacyOrderStatusSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        if (PharmacyOrderStatus::all()->count() == 0){
+            foreach(['Recieved', 'Approved', 'Rejected', 'Cancelled', 'Out For Delivery', 'Delivered'] as $status){
+                PharmacyOrderStatus::factory()->create(['name' => $status]);
+            }
+        }
     }
 }
