@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pharmacy_cancellation_details', function (Blueprint $table) {
+        Schema::create('cancellation_detail_reason', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('pharmacy_order_id')->constrained(table: 'pharmacy_orders');
-            
+            $table->foreignId('detail_id')->constrained(table: 'pharmacy_cancellation_details');
+            $table->foreignId('reason_id')->constrained(table: 'pharmacy_cancellation_reasons');
+
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pharmacy_cancellation_details');
+        Schema::dropIfExists('cancellation_detail_reason');
     }
 };
