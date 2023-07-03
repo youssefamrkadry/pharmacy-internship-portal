@@ -11,8 +11,10 @@ class PharmacyOrderStatus extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = ['name'];
+
     public function pharmacy_orders(): HasMany
     {
-        return $this->hasMany(PharmacyOrder::class);
+        return $this->hasMany(PharmacyOrder::class, 'status_id');
     }
 }

@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class PharmacyOrderImage extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = ['image_url', 'pharmacy_order_id'];
     
     public function pharmacy_order(): BelongsTo
     {

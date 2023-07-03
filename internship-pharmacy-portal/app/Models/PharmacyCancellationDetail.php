@@ -12,6 +12,8 @@ class PharmacyCancellationDetail extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = ['pharmacy_order_id', 'cancellation_note'];
+
     public function pharmacy_order(): BelongsTo
     {
         return $this->belongsTo(PharmacyOrder::class);

@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class PharmacyCancellationReason extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = ['name'];
     
     public function pharmacy_cancellation_details(): BelongsToMany
     {

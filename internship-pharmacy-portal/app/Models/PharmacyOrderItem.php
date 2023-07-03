@@ -11,6 +11,11 @@ class PharmacyOrderItem extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'name', 'list_price', 'quantity', 'pharmacy_order_id',
+        'image_url', 'form', 'unit'
+    ];
+
     public function pharmacy_order(): BelongsTo
     {
         return $this->belongsTo(PharmacyOrder::class);

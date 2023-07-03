@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pharmacy_order_users', function (Blueprint $table) {
             $table->id();
 
+            $table->string('user_global_id')->unique();
             $table->string('name');
             $table->string('mobile_number');
             
