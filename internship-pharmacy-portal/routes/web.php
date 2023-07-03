@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/pharmacy-portal', function () {
+    return view('pharmacy-portal');
+});
+
 Route::get('/pharmacy-order', [PharmacyOrderController::class, 'get_pharmacy_order']);
 
 Route::post('/create-order', [PharmacyOrderController::class, 'create_from_scratch']);

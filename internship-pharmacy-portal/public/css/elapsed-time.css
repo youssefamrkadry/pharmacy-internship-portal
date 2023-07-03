@@ -1,0 +1,17 @@
+.elapsed-time-cell {
+    margin-left: auto;
+    margin-right: auto;
+}
+.elapsed-timer {
+    display: flex;
+    background-color: rgba(22, 167, 101, 0.2);
+    width: 60px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.elapsed-timer span {
+    color: #16A765;
+}
