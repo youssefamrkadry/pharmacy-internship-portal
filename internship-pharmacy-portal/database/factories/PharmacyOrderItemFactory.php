@@ -19,12 +19,16 @@ class PharmacyOrderItemFactory extends Factory
      */
     public function definition(): array
     {
+        $json = file_get_contents('./public/json/meds.json');
+        // Decode the JSON file
+        $json_data = json_decode($json, true);
+        $med = Arr::random($json_data['meds']);
         return [
-            'name' => Str::random(15),
+            'name' => $med['name'],
             'list_price' => fake()->randomFloat(2,0.5,50),
             'quantity' => random_int(1,5),
             'pharmacy_order_id' => PharmacyOrder::all()->random(),
-            'image_url' => fake()->url(),
+            'image_url' => $med['image'],
             'form' => Arr::random(['Tablets', 'Flexpen', 'Suppository']),
             'unit' => Arr::random(['Pill', 'Bottle', 'Sachet']),
         ];
