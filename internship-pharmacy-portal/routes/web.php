@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PharmacyOrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/pharmacy-order', [PharmacyOrderController::class, 'get_pharmacy_order']);
+
+Route::post('/create-order', [PharmacyOrderController::class, 'create_from_scratch']);
+
+Route::patch('/update-order', [PharmacyOrderController::class, 'update_order']);

@@ -20,6 +20,7 @@ class PharmacyOrderUserAddressFactory extends Factory
     public function definition(): array
     {
         return [
+            'address_global_id' => Str::random(5),
             'user_id' => PharmacyOrderUser::all()->random(),
             'buliding_number' => fake()->buildingNumber(),
             'street_name' => fake()->streetName(),

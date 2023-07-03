@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('pharmacy_order_id')->constrained(table: 'pharmacy_orders');
+            $table->string('cancellation_note');
             
             $table->timestamps();
             $table->softDeletes();

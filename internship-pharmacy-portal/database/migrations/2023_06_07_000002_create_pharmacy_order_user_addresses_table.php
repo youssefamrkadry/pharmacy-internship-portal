@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pharmacy_order_user_addresses', function (Blueprint $table) {
             $table->id();
             
+            $table->string('address_global_id')->unique();
             $table->foreignId('user_id')->constrained(table: 'pharmacy_order_users');
             $table->string('buliding_number');
             $table->string('street_name');
