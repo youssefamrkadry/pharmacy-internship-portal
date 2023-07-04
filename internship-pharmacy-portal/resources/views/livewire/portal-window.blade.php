@@ -76,7 +76,10 @@
                     @foreach ($orders as $i=>$order)
                         <div wire:click="show_order({{ $order->id }})" class='order-select-{{$i % 2 == 0 ? 'even' : 'odd'}}'>
                             <span>{{ $order->order_number }}</span>
-                            @livewire('elapsed-time', ['assigned_at' => $order->assigned_at], key($order->id))
+                            @livewire('elapsed-time', [
+                                'assigned_at' => $order->assigned_at,
+                                'history' => ($history_tab == 'selected')
+                                ], key($order->id))
                         </div>
                     @endforeach
                 </div>

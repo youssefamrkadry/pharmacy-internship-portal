@@ -14,7 +14,7 @@ class PortalWindow extends Component
 
     public function mount()
     {
-        $this->orders = PharmacyOrder::where('id', '<', 10)->get();
+        $this->orders = PharmacyOrder::whereIn('status_id', [1, 2, 5])->get();
     }
 
     public function render()
@@ -24,14 +24,14 @@ class PortalWindow extends Component
 
     public function select_active_orders()
     {
-        $this->orders = PharmacyOrder::where('id', '<', 10)->get();
+        $this->orders = PharmacyOrder::whereIn('status_id', [1, 2, 5])->get();
         $this->active_orders_tab = "selected";
         $this->history_tab = "unselected";
     }
 
     public function select_history()
     {
-        $this->orders = PharmacyOrder::where('id', '>', 10)->get();
+        $this->orders = PharmacyOrder::whereIn('status_id', [3, 4, 6])->get();
         $this->active_orders_tab = "unselected";
         $this->history_tab = "selected";
     }
