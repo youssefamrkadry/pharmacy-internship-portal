@@ -54,6 +54,11 @@
     background-color: white;
     padding-right: 15px;
     padding-left: 20px;
+    color: #61687A;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 .order-selection-block 

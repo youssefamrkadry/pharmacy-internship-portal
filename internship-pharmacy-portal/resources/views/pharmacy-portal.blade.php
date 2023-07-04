@@ -19,6 +19,7 @@
         <link href="{{ asset('css/orders-list.css') }}" rel="stylesheet">
         <link href="{{ asset('css/order-details.css') }}" rel="stylesheet">
         <link href="{{ asset('css/elapsed-time.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/order-details-footer.css') }}" rel="stylesheet">
         
     </head>
     <body>

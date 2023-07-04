@@ -72,17 +72,7 @@
                     <span>Order Number</span>
                     <span>Elapsed Time</span>
                 </div>
-                <div class="order-selectors-container">
-                    @foreach ($orders as $i=>$order)
-                        <div wire:click="show_order({{ $order->id }})" class='order-select-{{$i % 2 == 0 ? 'even' : 'odd'}}'>
-                            <span>{{ $order->order_number }}</span>
-                            @livewire('elapsed-time', [
-                                'assigned_at' => $order->assigned_at,
-                                'history' => ($history_tab == 'selected')
-                                ], key($order->id))
-                        </div>
-                    @endforeach
-                </div>
+                @livewire('orders-container')
             </div>
         </div>
 
@@ -108,22 +98,36 @@
                         <span>Discount</span>
                         <span>Total Price</span>
                     </div>
-                    <div class="order-details-container">
-                        @if ($active_order)
-                            @foreach ($active_order->pharmacy_order_items as $i=>$item)
-                                <div class='detail-select-{{$i % 2 == 0 ? 'even' : 'odd'}}'>
-                                    <img class='med_img' src="{{$item->image_url}}">
-                                    <span>{{ $item->name }}</span>
-                                    <span>{{ $item->form }}</span>
-                                    <span>{{ $item->quantity }}</span>
-                                    <span>{{ $item->unit }}</span>
-                                    <span>{{ $item->list_price }}</span>
-                                    <span>0</span>
-                                    <span>{{ $item->list_price * $item->quantity }}</span>
-                                </div>
-                            @endforeach
+                    @if ($active_order)
+                        <div class="order-details-container">
+                            
+                                @foreach ($active_order->pharmacy_order_items as $i=>$item)
+                                    <div class='detail-select-{{$i % 2 == 0 ? 'even' : 'odd'}}'>
+                                        <img class='med_img' src="{{$item->image_url}}">
+                                        <span>{{ $item->name }}</span>
+                                        <span>{{ $item->form }}</span>
+                                        <span>{{ $item->quantity }}</span>
+                                        <span>{{ $item->unit }}</span>
+                                        <span>{{ $item->list_price }}</span>
+                                        <span>0</span>
+                                        <span>{{ $item->list_price * $item->quantity }}</span>
+                                    </div>
+                                @endforeach
+                        </div>
+                        @if($active_order->status_id == 1)
+                            @include('sub-blades.order-detail-footers.assigned')
+                        @elseif($active_order->status_id == 2)
+                            @include('sub-blades.order-detail-footers.approved')
+                        @elseif($active_order->status_id == 3)
+                            @include('sub-blades.order-detail-footers.rejected')
+                        @elseif($active_order->status_id == 4)
+                            @include('sub-blades.order-detail-footers.cancelled')
+                        @elseif($active_order->status_id == 5)
+                            @include('sub-blades.order-detail-footers.delivering')
+                        @elseif($active_order->status_id == 6)
+                            @include('sub-blades.order-detail-footers.delivered')
                         @endif
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>

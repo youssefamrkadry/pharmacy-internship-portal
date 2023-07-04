@@ -23,6 +23,6 @@ class PharmacyOrderUserAddress extends Model
 
     public function pharmacy_order_user(): BelongsTo
     {
-        return $this->belongsTo(PharmacyOrderUser::class);
+        return $this->belongsTo(PharmacyOrderUser::class, 'user_id');
     }
 }
