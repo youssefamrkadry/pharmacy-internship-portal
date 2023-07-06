@@ -38,13 +38,15 @@
 }
 
 .right-section {
-    width: 330px;
     display: flex;
     align-items: center;
     padding-left: 20px;
     padding-right: 20px;
     flex-shrink: 0;
     font-size: 16px;
+}
+.right-section a {
+    align-items: center;
 }
 
 .right-section img {

@@ -50,8 +50,10 @@
         </div>
         <div class="right-section">
             <span>Login Time: 11:00 am</span>
-            <img src="{{asset('images/default-user-photo.svg')}}">
-            <span>Youssef Kadry</span>
+            <a href="profile">
+                <img src="{{asset('images/default-user-photo.svg')}}">
+            </a>
+            <span>{{Auth::user()->name}}</span>
         </div>
 
     </div>
