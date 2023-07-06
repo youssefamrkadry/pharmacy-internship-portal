@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\PharmacyOrderItem;
 use App\Models\PharmacyOrderStatus;
-use App\Models\PharmacyOrderUser;
 use App\Models\PharmacyOrderUserAddress;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -38,6 +37,7 @@ class PharmacyOrderFactory extends Factory
             'payment_method_id' => random_int(0,1),
             'accepted_at' => fake()->dateTime(),
             'assigned_at' => fake()->dateTime(),
+            'pharmacy_id' => User::all()->random(),
         ];
     }
 }

@@ -48,4 +48,9 @@ class PharmacyOrder extends Model
     {
         return $this->belongsTo(PharmacyOrderStatus::class, "status_id");
     }
+
+    public function pharmacy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, "pharmacy_id");
+    }
 }
