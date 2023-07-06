@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\PharmacyOrder;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class OrdersContainer extends Component
@@ -18,7 +19,8 @@ class OrdersContainer extends Component
 
     public function mount()
     {
-        $this->orders = PharmacyOrder::whereIn('status_id', [1, 2, 5])->get();
+        $this->orders = PharmacyOrder::where('pharmacy_id', Auth::user()->id)
+        ->whereIn('status_id', [1, 2, 5])->get();
     }
     public function render()
     {
@@ -28,10 +30,12 @@ class OrdersContainer extends Component
     public function refresh_orders_in_place()
     {
         if($this->tab == 'active'){
-            $this->orders = PharmacyOrder::whereIn('status_id', [1, 2, 5])->get();
+            $this->orders = PharmacyOrder::where('pharmacy_id', Auth::user()->id)
+            ->whereIn('status_id', [1, 2, 5])->get();
         }
         else {
-            $this->orders = PharmacyOrder::whereIn('status_id', [3, 4, 6])->get();
+            $this->orders = PharmacyOrder::where('pharmacy_id', Auth::user()->id)
+            ->whereIn('status_id', [3, 4, 6])->get();
         }
     }
 
@@ -39,10 +43,12 @@ class OrdersContainer extends Component
     {
         $this->tab = $mode;
         if($mode == 'active'){
-            $this->orders = PharmacyOrder::whereIn('status_id', [1, 2, 5])->get();
+            $this->orders = PharmacyOrder::where('pharmacy_id', Auth::user()->id)
+            ->whereIn('status_id', [1, 2, 5])->get();
         }
         else {
-            $this->orders = PharmacyOrder::whereIn('status_id', [3, 4, 6])->get();
+            $this->orders = PharmacyOrder::where('pharmacy_id', Auth::user()->id)
+            ->whereIn('status_id', [3, 4, 6])->get();
         }
     }
 }

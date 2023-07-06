@@ -14,8 +14,12 @@ use App\Http\Controllers\PharmacyOrderController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('pharmacy-portal');
 });
 
 Route::get('/pharmacy-portal', function () {
@@ -28,9 +32,9 @@ Route::post('/create-order', [PharmacyOrderController::class, 'create_from_scrat
 
 Route::patch('/update-order', [PharmacyOrderController::class, 'update_order']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

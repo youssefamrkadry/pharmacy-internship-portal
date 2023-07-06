@@ -50,9 +50,15 @@
         </div>
         <div class="right-section">
             <span>Login Time: 11:00 am</span>
-            <a href="profile">
+            <div class="dropdown">
                 <img src="{{asset('images/default-user-photo.svg')}}">
-            </a>
+                <div class="dropdown-content">
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                    </form>
+                </div>
+            </div>
             <span>{{Auth::user()->name}}</span>
         </div>
 

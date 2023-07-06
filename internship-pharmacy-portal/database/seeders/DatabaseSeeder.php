@@ -11,6 +11,7 @@ use App\Models\PharmacyOrderItem;
 use App\Models\PharmacyOrderStatus;
 use App\Models\PharmacyOrderUser;
 use App\Models\PharmacyOrderUserAddress;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -35,6 +36,9 @@ class DatabaseSeeder extends Seeder
             PharmacyOrderStatusSeeder::class,
             PharmacyCancellationReasonSeeder::class
         ]);
+
+        // Add Pharmacies
+        User::factory()->count(3)->create();
 
         // Create the pharmacy orders and a single item for each
         $pharmacy_orders = PharmacyOrder::factory()->count(10)->create();

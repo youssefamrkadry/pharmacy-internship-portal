@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\PharmacyOrder;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class PortalWindow extends Component
 {
